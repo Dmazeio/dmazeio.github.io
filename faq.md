@@ -9,6 +9,7 @@
 - [How do I generate a link to the web app?](#how-do-i-generate-a-link-to-the-web-app)
 - [What should the value for etag be?](#what-should-the-value-for-etag-be)
 - [The API responds with 400 - Bad Request, how do I resolve the errors?](#the-api-responds-with-400---bad-request-how-do-i-resolve-the-errors)
+- [The Open API specification says that an e_ or a_ field is required, do I need an ID in the 'values' array or can it be empty?](#the-open-api-specification-says-that-an-e_-or-a_-field-is-required-do-i-need-an-id-in-the-values-array-or-can-it-be-empty)
 
 ## Why do some users have short GUID-like IDs and others have longer hash-like IDs?
 Because...
@@ -59,3 +60,7 @@ Either one will work just as well. For updates you must get the article from the
 
 ## The API responds with 400 - Bad Request, how do I resolve the errors?
 The response should include more information on what is missing or incorrect. The most common issue is with missing fields (such as title) or entity references. You might have to study the template to understand why an article has very specific requirements.
+
+## The Open API specification says that an e_ or a_ field is required, do I need an ID in the 'values' array or can it be empty?
+
+If the field is required you have to supply a valid Id for the given type. To remove the value (for non required field) - you have to set the array as empty, not remove the field all together.
