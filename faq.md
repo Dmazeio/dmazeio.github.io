@@ -1,24 +1,69 @@
 # Frequently asked questions <!-- omit in toc -->
 
 
+- [Are IDs in UXRisk GUIDs?](#are-ids-in-uxrisk-guids)
 - [Why do some users have short GUID-like IDs and others have longer hash-like IDs?](#why-do-some-users-have-short-guid-like-ids-and-others-have-longer-hash-like-ids)
 - [What is the correlation between a Users id and their Azure Active Directory Object ID?](#what-is-the-correlation-between-a-users-id-and-their-azure-active-directory-object-id)
+- [How do I get a valid UXRisk ID?](#how-do-i-get-a-valid-uxrisk-id)
 - [What are the difference between an entity and an article?](#what-are-the-difference-between-an-entity-and-an-article)
 - [What are the base required fields for an entity?](#what-are-the-base-required-fields-for-an-entity)
+- [What are the base required fields for an article?](#what-are-the-base-required-fields-for-an-article)
+- [What are the limits for articles?](#what-are-the-limits-for-articles)
 - [What is sys_sequence vs. sequence?](#what-is-sys_sequence-vs-sequence)
 - [How do I generate a link to the web app?](#how-do-i-generate-a-link-to-the-web-app)
 - [What should the value for etag be?](#what-should-the-value-for-etag-be)
 - [The API responds with 400 - Bad Request, how do I resolve the errors?](#the-api-responds-with-400---bad-request-how-do-i-resolve-the-errors)
 - [The Open API specification says that an e_ or a_ field is required, do I need an ID in the 'values' array or can it be empty?](#the-open-api-specification-says-that-an-e_-or-a_-field-is-required-do-i-need-an-id-in-the-values-array-or-can-it-be-empty)
 
+## Are IDs in UXRisk GUIDs?
+Yes and now. Most of the IDs looks like Guids, but UXRisk and any other 3^rd^ party system should not treat IDs as Guids, but as strings of any length. The format and length can (and will) change at any time.
+
+However, all IDs (except on user entity) are globally unique. User entity is the only exception - a user in Organization A has the same ID in Organization B (assuming the user has access to both). All other IDs should be considered globally unique. This means that it is safe to cache *almost* all objects using their ID only. 
+
 ## Why do some users have short GUID-like IDs and others have longer hash-like IDs?
-Because...
+As a general rule "long hash-like IDs" are from "proper" users syncronized from Azure AD or Auth0 logins. Whilst short "GUID-like IDs" are from "soft users" added manually by other users.
 
 ## What is the correlation between a Users id and their Azure Active Directory Object ID?
-Basically...
+For Azure AD users we take their `Object ID` (`oid` claim) and perform a SHA-256 hash on it. For Auth0 users we take their `sub` claim and do the same SHA-256 hash. In .net the code to produce the hash looks like this:
+
+```csharp
+var objectId = "bfc744e5-e5c6-4072-9405-1521d29ddc93";
+var bytes = Encoding.Unicode.GetBytes(objectId);
+var hashstring = SHA256.Create();
+var hash = hashstring.ComputeHash(bytes);
+var hashedId = hash.Aggregate(string.Empty, (current, x) => current + $"{x:x2}");
+```
+
+## How do I get a valid UXRisk ID?
+Simple, make a request to our ID endpoint
+
+```
+Request:
+GET https://api.arcadiacloud.com/id
+
+Response:
+{
+  "results": [
+    {
+      "ids": [
+        "4bc8cd90-ebdd-4d91-ba34-1a8bd9ed21d8",
+        "55391f67-eef5-4b17-a137-4b4c0073fc00",
+        "..."
+      ]
+    }
+  ],
+  "total": 0
+}
+```
+
+By default you get 20 IDs in one call, these can be cached and consumed by your client.
 
 ## What are the difference between an entity and an article?
-bla bla...
+
+In short an Entity is a code table - consider the canonical example of normalizing a database; given an order system where each order would have order lines and each order line would be refering to a product - in UXRisk this would be setup with `order` and `order line` as articles and `product` as entity (other properties omitted). The key here is that product will be used in many order lines, but does not (necessarily) refer to any other pieces of data (in real world it probably would!). 
+
+From UXRisk APIs point of view the rules for articles and entities are quite different, see below for more details. Rule of thumb: If you are looking to syncronize 'static' data, such as locations, departments, product names etc. those are *usually* entities. But dynamic data, such as incidents, accidents, actions etc. are *usually* articles. 
+
 
 ## What are the base required fields for an entity?
 All entities (locations, units, statuses etc.) requires:
@@ -27,7 +72,7 @@ All entities (locations, units, statuses etc.) requires:
 - name
 - parentid ("0" for root)
 
-Any other (non-nested) property is allowed, such as booleans and numbers.
+Any other (non-nested) property is allowed, such as booleans and numbers. Nested properties are generally not supported for entities (some exceptions, un-documented atm.).
 
 Example:
 ```json
@@ -39,6 +84,63 @@ Example:
     "isdefault": false
 }
 ```
+
+## What are the base required fields for an article?
+All articles (incidents, accidents etc.) requires:
+<!-- no toc -->
+- id
+- title
+- parentid ("0" for root)
+- parenttype ("" for root)
+- etag ("0" for new)
+- sys_template 
+
+Any other (non-nested) property is allowed, such as booleans and numbers. Nested properties are used to link to entities and children. Entity references starts with `e_` and child (article) references starts with `a_`.
+
+Example:
+```json
+{
+    "id": "5aa2837a-4a0d-48e5-9541-b044a10b9515",
+    "title": "Title for the article",
+    "parentid": "b24fd878-a0e6-41bc-95b9-ddeb2949c1ef",
+    "parenttype": "incident",
+    "numberofaffected": 20,
+    "issevere": false,
+    "e_wound_location_ids": {
+        "type": "wound",
+        "values": 
+        [ 
+            "0c2887c4-1a48-4d0e-9cab-38ee1491ed7e" 
+        ]
+    },
+    "a_measures_ids": {
+        "type": "measure",
+        "values": 
+        [ 
+            "69800f7f-107e-4700-9f01-bc64d683b2a9", 
+            "b66c09a0-57bd-4d60-be3e-a12b4660e365"
+        ]
+    },
+    "a_causes": {
+        "type": "cause",
+        "values": 
+        [ 
+            "8a51233f-c2e6-472a-926a-38744c68fc63",
+            "0d4d64b6-2ec0-4dfd-bf93-d4d4800e73ab"
+        ]
+    }
+}
+```
+
+Any number of properties can be added, even properties not described in a template.
+
+## What are the limits for articles?
+
+Guidelines:
+
+1. No more than 200 properties
+2. No more than 2000 chars in a text field
+3. No more than 100 Entity/Article references
 
 ## What is sys_sequence vs. sequence?
 bla bla
