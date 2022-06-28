@@ -44,7 +44,15 @@ Example:
 bla bla
 
 ## How do I generate a link to the web app?
-https://.... 
+The basic link to a root type and id looks like this: 
+
+`https://app.uxrisk.com/article/[Root ID]?type=[Root Type]`
+
+To link to a child article the link should look something like this:
+
+`https://app.uxrisk.com/article/[Root ID]?child=[Child ID]&childType=[Child Type]&tab=[Tab Name]&type=[Root Type]`
+
+Root Id and Type, Child Id and Type should be self explainatory, but "Tab name" requires some explanation. This is taken from the template definition and can/will be different from one template to the next. The value to be used in the URL can be found by either browsing data and simply copying it or by inspecting the template. In the layouts section there are a number of navigators, each with an id. It is this ID that should be used in the URL.
 
 ## What should the value for etag be?
 When creating a new article (incident, accident, action etc.) you should use either empty string or string zero:
