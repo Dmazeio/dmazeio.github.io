@@ -8,4 +8,4 @@ Once the app is registered properly you can [aquire an access token](aquire_toke
 
 With the access token you can make [basic api calls](basic.md) and get to understand how our API works. 
 
-We have some [Frequently Asked Questions](faq.md), but that's all for now.
+For troubleshooting we have an [Frequently Asked Questions](faq.md). If your question is not answered here, please reach out to us via [Support](https://www.uxrisk.com/contact) and we will get back to you as soon as possible.
