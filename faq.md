@@ -5,6 +5,7 @@
 - [Why do some users have short GUID-like IDs and others have longer hash-like IDs?](#why-do-some-users-have-short-guid-like-ids-and-others-have-longer-hash-like-ids)
 - [What is the correlation between a Users id and their Azure Active Directory Object ID?](#what-is-the-correlation-between-a-users-id-and-their-azure-active-directory-object-id)
 - [How do I get a valid UXRisk ID?](#how-do-i-get-a-valid-uxrisk-id)
+- [How can I get the OpenAPI (Swagger) specification for your API?](#how-can-i-get-the-openapi-swagger-specification-for-your-api)
 - [What are the difference between an entity and an article?](#what-are-the-difference-between-an-entity-and-an-article)
 - [What are the base required fields for an entity?](#what-are-the-base-required-fields-for-an-entity)
 - [What are the base required fields for an article?](#what-are-the-base-required-fields-for-an-article)
@@ -57,6 +58,9 @@ Response:
 ```
 
 By default you get 20 IDs in one call, these can be cached and consumed by your client.
+
+## How can I get the OpenAPI (Swagger) specification for your API? 
+In the Admin Application you can download the API specification (Open API v2) for any template. This document can be loaded into [Swagger Editor](https://swagger.io/tools/swagger-editor/) to try out the API endpoints. See the chapter on [aquire token](aquire_token.md) to learn how to get a token for the API. Prefix the token with `Bearer` in Swagger Editor to properly authenticate.
 
 ## What are the difference between an entity and an article?
 
