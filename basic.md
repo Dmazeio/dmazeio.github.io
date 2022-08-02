@@ -7,6 +7,7 @@ Once you [have a valid access token](aquire_token.md) you can start calling our 
 - [Common API Response object](#common-api-response-object)
 - [Get all templates](#get-all-templates)
 - [Get a specific template](#get-a-specific-template)
+- [Get Open API Specification (Swagger) for a template](#get-open-api-specification-swagger-for-a-template)
 - [Get all entity types](#get-all-entity-types)
 - [Get Entities](#get-entities)
 - [Update an entity](#update-an-entity)
@@ -51,6 +52,17 @@ var firstTemplate = await firstTemplateResponse.Content.ReadFromJsonAsync<ApiRes
 ```
 
 The template classes are quite extensive, not recommended to dig too deep into. 
+
+## Get Open API Specification (Swagger) for a template
+
+Given that each template in UXRisk can be quite different you can extract the Open API Specification document for each template. If you get the specification for 2 templates and compare them you will see a lot of overlap - this is to be expected since many endpoints are shared and/or common.
+
+```csharp
+	var docResponse = await _client.GetAsync($"{_baseUrl}/doc/{firstTemplateDescription.Id}");
+	var docString = await docResponse.Content.ReadAsStringAsync();
+```
+
+This string can be pasted into the [editor](https://editor.swagger.io/) - you can then browse the entire API. 
 
 ## Get all entity types
 
