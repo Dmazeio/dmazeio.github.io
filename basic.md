@@ -2,7 +2,7 @@
 
 Once you [have a valid access token](aquire_token.md) you can start calling our API. Below are some simple examples on how to do so.
 
-[Complete source code](full_basic_code.md) is available - please keep in mind that this is not production ready code. No logging, error handling, it makes a lot of assumptions etc. Please use is with caution.
+[Complete source code](full_source.md) is available - please keep in mind that this is not production ready code. No logging, error handling, it makes a lot of assumptions etc. Please use is with caution.
 
 - [Common API Response object](#common-api-response-object)
 - [Get all templates](#get-all-templates)

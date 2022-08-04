@@ -2,7 +2,7 @@
 
 Once you [have a valid access token](aquire_token.md) you can start calling our API. Below are some advanced examples of how to do so. Please read through the [Basic API](basic.md) part first, to get an understanding of how the API works.
 
-[Complete source code](full_advanced_code.md) is available - please keep in mind that this is not production ready code. No logging, error handling, it makes a lot of assumptions etc. Please use is with caution.
+[Complete source code](full_source.md) is available - please keep in mind that this is not production ready code. No logging, error handling, it makes a lot of assumptions etc. Please use is with caution.
 
 ## Get some articles
 
@@ -21,6 +21,9 @@ var oneArticle = oneArticleResults.Results.First();
 ```
 
 This will give you the first article of type `assessment`.
+
+## Create an article
+
 
 ## Update an article with new property
 

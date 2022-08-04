@@ -6,6 +6,12 @@ To interact with our API you need to create an app registration in your Azure Ac
 
 Once the app is registered properly you can [aquire an access token](aquire_token.md) to call our API.
 
-With the access token you can make [basic api calls](basic.md) and get to understand how our API works. Some slightly more [advanced examples](advanced.md) are also available.
+API Examples
+ - [Basic Entity API calls](basic.md)
+ - [Create an article](create_article.md)
+ - [Query for articles](query_article.md)
+ - [Other Article API calls](advanced.md)
+
+[Full source code](full_source.md) is available, but please note that the code is meant for demonstration purpose only.
 
 For troubleshooting we have an [Frequently Asked Questions](faq.md). If your question is not answered here, please reach out to us via [Support](https://www.uxrisk.com/contact) and we will get back to you as soon as possible.
