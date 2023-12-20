@@ -1,10 +1,16 @@
 ## Welcome to Dmaze Dev Docs
 
-Dmaze provides an extensive API to allow third party developers full access to all operations and data in Dmaze. For now, only 'Enterprise' customers can access the API, using Azure AD client id and secrets to obtain a JSON Web Token (jwt). 
+Dmaze provides an extensive API to allow third party developers full access to all operations and data in Dmaze. There are two ways of authorizing as an integration:
 
-To interact with our API you need to create an app registration in your Azure Active Directory. [Follow our documentation](app_reg.md) to complete the app registration.
+### Microsoft Entra ID integration
+Customers that have connection Microsoft Entra ID can access the API using a Microsoft Entra ID application to obtain a JSON Web Token (jwt). 
+
+To interact with our API you either need to create an app registration in your Entra ID. [Follow our documentation](app_reg.md) to complete the app registration.
 
 Once the app is registered properly you can [aquire an access token](aquire_token.md) to call our API.
+
+### Standalone API user
+For all customers we also support standalone API users. To get a standalone API configured, for now you'll have to contact Dmaze Support.
 
 API Examples
  - [Basic Entity API calls](basic.md)

@@ -24,7 +24,7 @@ All the examples use a common API response class `ApiResult` - it is a simple wr
 			"parentid": "0",			
 			"id": "bd46901a-390d-44f0-b098-e7f9170ff188",			
 			"fullpath": "South America",
-            ...		
+			...
 		},
 		{...}
 	],
@@ -58,8 +58,8 @@ The template classes are quite extensive, not recommended to dig too deep into.
 Given that each template in Dmaze can be quite different you can extract the Open API Specification document for each template. If you get the specification for 2 templates and compare them you will see a lot of overlap - this is to be expected since many endpoints are shared and/or common.
 
 ```csharp
-	var docResponse = await _client.GetAsync($"{_baseUrl}/doc/{firstTemplateDescription.Id}");
-	var docString = await docResponse.Content.ReadAsStringAsync();
+var docResponse = await _client.GetAsync($"{_baseUrl}/doc/{firstTemplateDescription.Id}");
+var docString = await docResponse.Content.ReadAsStringAsync();
 ```
 
 This string can be pasted into the [editor](https://editor.swagger.io/) - you can then browse the entire API. 
