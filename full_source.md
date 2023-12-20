@@ -31,7 +31,7 @@ public async Task<string> GetAccessToken(string tenantId, string clientId, strin
 	return tokenResponse.AccessToken;
 }
 
-private const string _baseUrl = "https://api.arcadiacloud.com";
+private const string _baseUrl = "https://api.dmaze.com";
 private readonly HttpClient _client = new HttpClient();
 
 public async Task BasicAPI(string accessToken)

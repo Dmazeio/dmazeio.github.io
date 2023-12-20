@@ -1,8 +1,8 @@
-# Create a Service User for UXRisk integration <!-- omit in toc -->
+# Create a Service User for Dmaze integration <!-- omit in toc -->
 
 - [App Registration](#app-registration)
 - [API permissions](#api-permissions)
-- [UXRisk Admin App](#uxrisk-admin-app)
+- [Dmaze Admin App](#Dmaze-admin-app)
 
 ## App Registration
 
@@ -18,7 +18,7 @@ Click Register
 
 On the next screen
 ![alt text](images/create_app_3.png)
-The highlighted ids will be used for your integration to UXRisk
+The highlighted ids will be used for your integration to Dmaze
 
 ## API permissions
 ![alt text](images/create_app_4.png)
@@ -26,7 +26,7 @@ The highlighted ids will be used for your integration to UXRisk
 Click Add a permission
 ![alt text](images/create_app_5.png)
 
-Select APIs my organization uses, search for uxrisk and select it
+Select APIs my organization uses, search for Dmaze and select it
 
 ![alt text](images/create_app_6.png)
 
@@ -47,7 +47,7 @@ Give it a description and choose when it should expire
 Make sure that you copy and save the secret value.
 This completes the setup of the service user in Azure AD.
 
-## UXRisk Admin App
+## Dmaze Admin App
 
 Make sure to select the correct organisation – main or sandbox – by selecting from the dropdown
 ![alt text](images/create_app_10.png)

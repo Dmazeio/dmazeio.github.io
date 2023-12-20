@@ -55,7 +55,7 @@ The template classes are quite extensive, not recommended to dig too deep into.
 
 ## Get Open API Specification (Swagger) for a template
 
-Given that each template in UXRisk can be quite different you can extract the Open API Specification document for each template. If you get the specification for 2 templates and compare them you will see a lot of overlap - this is to be expected since many endpoints are shared and/or common.
+Given that each template in Dmaze can be quite different you can extract the Open API Specification document for each template. If you get the specification for 2 templates and compare them you will see a lot of overlap - this is to be expected since many endpoints are shared and/or common.
 
 ```csharp
 	var docResponse = await _client.GetAsync($"{_baseUrl}/doc/{firstTemplateDescription.Id}");

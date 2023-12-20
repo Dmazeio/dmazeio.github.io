@@ -1,6 +1,6 @@
 # Create Article <!-- omit in toc -->
 
-- [Get UXRisk IDs](#get-uxrisk-ids)
+- [Get Dmaze IDs](#get-Dmaze-ids)
 - [Get templates](#get-templates)
 - [Create new article](#create-new-article)
 - [Retrieve created article](#retrieve-created-article)
@@ -8,14 +8,14 @@
   - [Entity References](#entity-references)
   - [Other properties](#other-properties)
 
-## Get UXRisk IDs
+## Get Dmaze IDs
 
 ```csharp
 var idResult = await _client.GetFromJsonAsync<ApiResult<IdResult>>($"{_baseUrl}/id", _opt);
 var ids = new Queue<string>(idResult.Results.First().Ids);
 ```
 
-First we get valid UXRisk IDs - these look like GUIDs, but should be treated as simple strings, the format can change without any further notice. By default the API will serve 20 Ids in a simple request.
+First we get valid Dmaze IDs - these look like GUIDs, but should be treated as simple strings, the format can change without any further notice. By default the API will serve 20 Ids in a simple request.
 
 ## Get templates
 ```csharp

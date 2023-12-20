@@ -1,6 +1,6 @@
-## Welcome to UXRisk Dev Docs
+## Welcome to Dmaze Dev Docs
 
-UXRisk provides an extensive API to allow third party developers full access to all operations and data in UXRisk. For now, only 'Enterprise' customers can access the API, using Azure AD client id and secrets to obtain a JSON Web Token (jwt). 
+Dmaze provides an extensive API to allow third party developers full access to all operations and data in Dmaze. For now, only 'Enterprise' customers can access the API, using Azure AD client id and secrets to obtain a JSON Web Token (jwt). 
 
 To interact with our API you need to create an app registration in your Azure Active Directory. [Follow our documentation](app_reg.md) to complete the app registration.
 
@@ -14,4 +14,4 @@ API Examples
 
 [Full source code](full_source.md) is available, but please note that the code is meant for demonstration purpose only.
 
-For troubleshooting we have an [Frequently Asked Questions](faq.md). If your question is not answered here, please reach out to us via [Support](https://www.uxrisk.com/contact) and we will get back to you as soon as possible.
+For troubleshooting we have an [Frequently Asked Questions](faq.md). If your question is not answered here, please reach out to us via [Support](https://www.Dmaze.com/contact) and we will get back to you as soon as possible.
