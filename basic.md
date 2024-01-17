@@ -99,4 +99,4 @@ var entityUrl = $"{_baseUrl}/entity/{entityName}/{firstEntity.Id}";
 var updateEntityResponse = await _client.PutAsync(entityUrl, content);
 ```
 
-Key here is that we only deserialized some properties, see [complete source code](full_basic_code.md) for all classes, and the API will accept this. Also we use the `etag` from the response when doing a `PUT` - otherwise it would fail our optimistic locking protection.
+Key here is that we only deserialized some properties, see [complete source code](full_source.md) for all classes, and the API will accept this. Also we use the `etag` from the response when doing a `PUT` - otherwise it would fail our optimistic locking protection.
