@@ -9,8 +9,8 @@ To interact with our API you either need to create an app registration in your E
 
 Once the app is registered properly you can [aquire an access token](aquire_token.md) to call our API.
 
-### Standalone API user
-For all customers we also support standalone API users. To get a standalone API configured, for now you'll have to contact Dmaze Support.
+### API Key
+Through our admin interface you can create API keys to call our API with.
 
 API Examples
  - [Basic Entity API calls](basic.md)
