@@ -59,3 +59,5 @@ Click Access Control
 Give the service user a name and enter (paste) the Object ID from a previous step.
 
 Click create. Now you have a service user in the correct organisation to run integrations.
+
+Once the app is registered properly you can [aquire an access token](aquire_token.md) to call our API.
