@@ -2,17 +2,12 @@
 
 Dmaze provides an extensive API to allow third party developers full access to all operations and data in Dmaze. There are two ways of authorizing as an integration:
 
-### Microsoft Entra ID integration
+### API Authentication and Authorization
 Customers that have connection Microsoft Entra ID can access the API using a Microsoft Entra ID application to obtain a JSON Web Token (jwt). 
 
-To interact with our API you either need to create an app registration in your Entra ID. [Follow our documentation](app_reg.md) to complete the app registration.
+To interact with our API you either need to create an [app registration](app_reg.md) in your [Microsoft Entra](https://www.microsoft.com/en-gb/security/business/microsoft-entra) or use [API Keys](apikey.md).
 
-Once the app is registered properly you can [aquire an access token](aquire_token.md) to call our API.
-
-### API Key
-Through our admin interface you can create API keys to call our API with.
-
-API Examples
+### API Examples
  - [Basic Entity API calls](basic.md)
  - [Create an article](create_article.md)
  - [Query for articles](query_article.md)
